@@ -1,0 +1,10 @@
+// Publicación en Cloudflare (cuenta Prisma-dev), separada del deploy de la app.
+// Uso: npx wrangler login (una sola vez) y después npm run publicar
+{
+  "name": "prisma-presentacion",
+  "account_id": "017a9a65f2465ab44d72f07ba85a4455",
+  "compatibility_date": "2026-11-19",
+  "assets": {
+    "directory": "./web"
+  }
+}

@@ -10,7 +10,7 @@
     "telefono": "node scripts/build-web.mjs --telefono",
     "capturar": "node scripts/capturar-app.mjs && node scripts/recortar-app.mjs",
     "pdf": "node scripts/exportar-pdf.mjs",
-    "publicar": "npm run build && wrangler pages deploy web --project-name prisma-presentacion --branch main --commit-dirty=true"
+    "publicar": "npm run build && wrangler deploy"
   },
   "keywords": [],
   "author": "",

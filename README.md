@@ -3,6 +3,7 @@
 Presentación comercial de PRISMA (parte de Agus: problema, solución y por qué elegirnos).
 Es una página web con una intro 3D en video y 13 slides animadas. Corre en Chrome o Edge, también sin internet.
 
+- **Verla online:** <https://prisma-presentacion.prisma-dev.workers.dev>
 - **Ver el video de la intro:** [`salida/intro-prisma.mp4`](salida/intro-prisma.mp4)
 - **Capturas completas del sistema:** [`salida/app/`](salida/app/)
 - **Ver las slides sin instalar nada:** [`salida/PRISMA-presentacion.pdf`](salida/PRISMA-presentacion.pdf) (estado final de cada slide, sin animaciones)
@@ -73,8 +74,8 @@ Los mails y teléfonos de la lista de técnicos se difuminan solos (`scripts/rec
 
 La carpeta publicable es `web/` y el comando de build es `npm run build`.
 
-- **Cloudflare Pages (proyecto `prisma-presentacion`, separado del de la app):** con la sesión iniciada (`npx wrangler login`), `npm run publicar` arma y sube la versión nueva.
-  Para que se publique solo en cada push: *Workers & Pages → Create → Pages → Connect to Git*, elegir este repo, *Build command* `npm run build`, *Build output directory* `web`.
+- **Cloudflare (publicada en <https://prisma-presentacion.prisma-dev.workers.dev>):** Worker `prisma-presentacion` en la cuenta Prisma-dev, separado del deploy de la app. La configuración está en `wrangler.jsonc`.
+  Para subir una versión nueva: `npx wrangler login` (una sola vez, con una cuenta que tenga acceso a Prisma-dev) y después `npm run publicar`.
 - **Vercel:** importar el repo; `vercel.json` ya tiene la configuración.
 
 ## Licencias de recursos
