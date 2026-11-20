@@ -1,7 +1,5 @@
 node_modules/
 
-# Capturas crudas del sistema (contienen datos de usuarios de prueba sin difuminar)
-salida/app/
 # Capturas de revisión y pruebas descartadas
 salida/web/
 salida/flujo/

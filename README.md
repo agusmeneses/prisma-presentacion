@@ -4,6 +4,7 @@ Presentación comercial de PRISMA (parte de Agus: problema, solución y por qué
 Es una página web con una intro 3D en video y 13 slides animadas. Corre en Chrome o Edge, también sin internet.
 
 - **Ver el video de la intro:** [`salida/intro-prisma.mp4`](salida/intro-prisma.mp4)
+- **Capturas completas del sistema:** [`salida/app/`](salida/app/)
 - **Ver las slides sin instalar nada:** [`salida/PRISMA-presentacion.pdf`](salida/PRISMA-presentacion.pdf) (estado final de cada slide, sin animaciones)
 
 ## Instalación
