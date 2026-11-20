@@ -75,7 +75,9 @@ Los mails y teléfonos de la lista de técnicos se difuminan solos (`scripts/rec
 La carpeta publicable es `web/` y el comando de build es `npm run build`.
 
 - **Cloudflare (publicada en <https://prisma-presentacion.prisma-dev.workers.dev>):** Worker `prisma-presentacion` en la cuenta Prisma-dev, separado del deploy de la app. La configuración está en `wrangler.jsonc`.
-  Para subir una versión nueva: `npx wrangler login` (una sola vez, con una cuenta que tenga acceso a Prisma-dev) y después `npm run publicar`.
+  **Se publica sola con cada push a `main`** (Workers Builds corre `npm run build` y `npx wrangler deploy`). Las otras ramas generan una versión de vista previa sin tocar la publicada.
+  La intro en video no se vuelve a renderizar en ese proceso: si cambia `src/intro.js`, corré `npm run intro` y subí el `salida/intro-prisma.mp4` nuevo.
+  Para publicar a mano: `npx wrangler login` (una sola vez, con una cuenta que tenga acceso a Prisma-dev) y después `npm run publicar`.
 - **Vercel:** importar el repo; `vercel.json` ya tiene la configuración.
 
 ## Licencias de recursos
