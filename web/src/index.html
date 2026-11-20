@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRISMA · Presentación</title>
+<link rel="icon" href="img/portada-cubo.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="escala"><div id="escenario">
+
+  <div id="fondo"></div>
+  <canvas id="ambiente" width="1920" height="1080"></canvas>
+
+  <!-- ============ 1 · PORTADA ============ -->
+  <section class="slide" data-slide="portada" data-notas="Presentarse: «Soy Agus y les vengo a presentar PRISMA». Dejar respirar la portada un segundo.">
+    <img class="portada-fondo" src="img/portada-fondo.png" alt="">
+    <p class="bajada portada-bajada" data-palabras>El mantenimiento de tu empresa, en un solo lugar.</p>
+  </section>
+
+  <!-- ============ 2 · PROBLEMA ============ -->
+  <section class="slide" data-slide="problema" data-notas="Contar el problema con ejemplos de todos los días: el aire que no enfría, la planilla que nadie actualiza, el preventivo que se olvidó.">
+    <p class="etiqueta" style="left:96px;top:196px">El problema</p>
+    <h2 class="titulo" style="left:96px;top:244px;width:900px" data-palabras>Hoy, el mantenimiento vive en cualquier lado</h2>
+    <div class="dolores">
+      <div class="dolor"><span class="tile"><i data-icono="message-circle-warning"></i></span>Los pedidos llegan por WhatsApp, mail o en el pasillo, y se pierden.</div>
+      <div class="dolor"><span class="tile"><i data-icono="history"></i></span>Nadie sabe qué se le hizo a cada equipo ni cuándo.</div>
+      <div class="dolor"><span class="tile"><i data-icono="calendar-x-2"></i></span>Los preventivos dependen de que alguien se acuerde.</div>
+      <div class="dolor"><span class="tile"><i data-icono="eye-off"></i></span>Sin datos no hay forma de medir tiempos ni de mejorar.</div>
+    </div>
+    <div class="caos">
+      <div class="pieza" data-caos="chat" style="left:1090px;top:130px;transform:rotate(-4deg) scale(.9)">
+        <div class="chat">
+          <header><span class="avatar"><i data-icono="users"></i></span><div><b>Oficina · avisos</b><small>23 participantes</small></div></header>
+          <div class="cuerpo">
+            <div class="burbuja"><span class="quien" style="color:#e0a35a">Recepción</span>El aire de la sala de reuniones sigue sin enfriar<span class="hora">09:12</span></div>
+            <div class="burbuja"><span class="quien" style="color:#7fb4e6">Administración</span>¿Alguien le avisó al técnico?<span class="hora">09:40</span></div>
+            <div class="burbuja propia">Ya avisé el lunes…<span class="hora">11:03</span></div>
+            <span class="sin-leer">48 mensajes sin leer</span>
+          </div>
+        </div>
+      </div>
+      <div class="pieza" data-caos="postit" style="left:1540px;top:180px;transform:rotate(7deg) scale(.87)"><div class="postit">Cambiar filtros<br><s>¿marzo?</s> ¿abril?<br>preguntar quién…</div></div>
+      <div class="pieza" data-caos="planilla" style="left:1220px;top:590px;transform:rotate(3deg)">
+        <div class="planilla">
+          <div class="barra"><i data-icono="file-spreadsheet"></i>mantenimiento_FINAL_v3 (2).xlsx</div>
+          <table>
+            <tr><th>Equipo</th><th>Último service</th><th>Estado</th></tr>
+            <tr><td>Impresora 2° piso</td><td class="vacia">—</td><td class="duda">¿?</td></tr>
+            <tr><td>Aire sala de reuniones</td><td>12/03</td><td class="duda">Pendiente</td></tr>
+            <tr><td>Bomba de agua</td><td class="vacia">—</td><td class="vacia"></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="pieza" data-caos="llamadas" style="left:1040px;top:880px;transform:rotate(-2deg) scale(.9)">
+        <div class="llamadas"><span class="circulo"><i data-icono="phone-missed"></i></span><div><b>3 llamadas perdidas</b><small>Mantenimiento · hace 2 h</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 · SOLUCIÓN ============ -->
+  <section class="slide" data-slide="solucion" data-notas="PRISMA junta todo ese caos en un único sistema. Nombrar los cuatro verbos: pedir, asignar, resolver, medir.">
+    <div class="caos-copia"></div>
+    <div class="nucleo"><div class="halo"></div><div class="onda"></div><img src="img/portada-cubo.png" alt=""></div>
+    <p class="etiqueta" style="left:96px;top:196px">La solución</p>
+    <h2 class="titulo" style="left:96px;top:244px;width:860px" data-palabras>PRISMA ordena todo en <em>un solo lugar</em></h2>
+    <p class="bajada" style="left:96px;top:470px;width:820px" data-palabras>Pedidos, órdenes, técnicos, equipos y métricas, conectados y en tiempo real.</p>
+    <div class="verbos">
+      <div class="verbo"><span class="tile"><i data-icono="ticket"></i></span><div><b>Pedir</b><span>en segundos, sin llamar</span></div></div>
+      <div class="verbo"><span class="tile"><i data-icono="user-cog"></i></span><div><b>Asignar</b><span>al técnico indicado</span></div></div>
+      <div class="verbo"><span class="tile"><i data-icono="wrench"></i></span><div><b>Resolver</b><span>desde el celular</span></div></div>
+      <div class="verbo"><span class="tile"><i data-icono="chart-column"></i></span><div><b>Medir</b><span>y decidir con datos</span></div></div>
+    </div>
+    <div class="tarjetas-reales">
+      <div class="recorte" style="left:0;top:0;width:880px"><img src="img/app/ticket-card.png" alt="Ticket en PRISMA"></div>
+      <div class="recorte" style="left:0;top:165px;width:880px"><img src="img/app/or-card.png" alt="Orden de reparación en PRISMA"></div>
+      <div class="recorte" style="left:0;top:330px;width:880px"><img src="img/app/plan-card.png" alt="Plan preventivo en PRISMA"></div>
+      <div class="recorte" style="left:0;top:480px;width:880px"><img src="img/app/tarea-tecnico.png" alt="Tarea del técnico en PRISMA"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4 · ROLES ============ -->
+  <section class="slide" data-slide="roles" data-notas="Cada persona ve solo lo que necesita. El cubo gira como el ícono de carga del sistema: una cara por rol.">
+    <p class="etiqueta" style="left:96px;top:120px">Cómo funciona</p>
+    <h2 class="titulo" style="left:96px;top:168px;width:820px" data-palabras>Un sistema, <em>tres roles</em></h2>
+    <svg class="conectores" viewBox="0 0 1920 1080">
+      <path d="M960 560 C 960 640, 372 610, 372 690"/>
+      <path d="M960 560 L 960 690"/>
+      <path d="M960 560 C 960 640, 1548 610, 1548 690"/>
+    </svg>
+    <div class="cubo3d-escena"><div class="cubo3d"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="rol" style="left:96px">
+      <header><span class="tile"><i data-icono="shield"></i></span><h3>Administrador</h3></header>
+      <p>Controla todo: inventario, órdenes, técnicos, proveedores y métricas.</p>
+      <div class="usa"><span>Panel de análisis</span><span>Órdenes</span><span>Inventario</span></div>
+    </div>
+    <div class="rol" style="left:684px">
+      <header><span class="tile"><i data-icono="wrench"></i></span><h3>Técnico</h3></header>
+      <p>Recibe sus tareas en el celular y las cierra con fotos de evidencia.</p>
+      <div class="usa"><span>Mis tareas</span><span>Escáner</span><span>Evidencias</span></div>
+    </div>
+    <div class="rol" style="left:1272px">
+      <header><span class="tile"><i data-icono="user-check"></i></span><h3>Usuario autorizado</h3></header>
+      <p>Pide ayuda en segundos y sigue el estado de su pedido, sin llamar a nadie.</p>
+      <div class="usa"><span>Mis tickets</span><span>Notificaciones</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 5 · ENTREGA ============ -->
+  <section class="slide" data-slide="entrega" data-notas="Lo diferencial: no le damos un sistema vacío. Cargamos la empresa completa antes del primer día y le entregamos PRISMA listo para operar.">
+    <p class="etiqueta" style="left:96px;top:120px">Llave en mano</p>
+    <h2 class="titulo" style="left:96px;top:168px;width:700px" data-palabras>Te lo entregamos <em>listo para usar</em></h2>
+    <p class="bajada" style="left:96px;top:338px;width:680px;font-size:25px" data-palabras>Antes del primer día cargamos tu empresa completa en PRISMA.</p>
+    <div class="pasos-entrega">
+      <div class="paso-entrega"><span class="tile"><i data-icono="building-2"></i></span>Ubicaciones<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="layers"></i></span>Tipos de equipos<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="monitor"></i></span>Inventario de equipos<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="briefcase"></i></span>Especialidades<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="hard-hat"></i></span>Técnicos<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="truck"></i></span>Proveedores<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="building"></i></span>Empresas externas<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="triangle-alert"></i></span>Plantillas de fallas<span class="check"><i data-icono="check"></i></span></div>
+      <div class="paso-entrega"><span class="tile"><i data-icono="clipboard-list"></i></span>Plantillas de tareas<span class="check"><i data-icono="check"></i></span></div>
+    </div>
+    <div class="barra-carga"><span>Configurando tu empresa</span><span class="riel"><i></i></span><b>0 %</b></div>
+    <div class="pila">
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Ubicaciones</span><span class="ventana-ruta">Inventario</span></div><img src="img/app/ubicaciones.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Tipos de equipos</span><span class="ventana-ruta">Inventario</span></div><img src="img/app/tipos-equipo.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Equipos</span><span class="ventana-ruta">Inventario · con código de barras</span></div><img src="img/app/equipos.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Especialidades</span><span class="ventana-ruta">Usuarios</span></div><img src="img/app/especialidades.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Técnicos</span><span class="ventana-ruta">Usuarios</span></div><img src="img/app/tecnicos.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Proveedores</span><span class="ventana-ruta">Inventario</span></div><img src="img/app/proveedores.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Empresas externas</span><span class="ventana-ruta">Servicios contratados</span></div><img src="img/app/empresas.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Fallas genéricas</span><span class="ventana-ruta">Plantillas</span></div><img src="img/app/fallas.png" alt=""></div>
+      <div class="ventana"><div class="ventana-barra"><span class="ventana-titulo">Tareas genéricas</span><span class="ventana-ruta">Plantillas</span></div><img src="img/app/tareas.png" alt=""></div>
+    </div>
+    <div class="sello"><div class="circulo"><i data-icono="check"></i></div><b>Lista para operar</b><span>Tu empresa, configurada desde el día uno</span></div>
+  </section>
+
+  <!-- ============ 6 · NUBE ============ -->
+  <section class="slide" data-slide="nube" data-notas="No hay que instalar servidores ni comprar nada. Para sumar a un empleado, el administrador lo da de alta y le llega la invitación al mail.">
+    <p class="etiqueta" style="left:96px;top:120px">Sin servidores ni instalaciones</p>
+    <h2 class="titulo" style="left:96px;top:168px;width:1500px" data-palabras>100 % en la nube, <em>desde cualquier lugar</em></h2>
+    <svg class="flujo" viewBox="0 0 1920 1080">
+      <path class="linea" id="f1" d="M440 395 C 520 395, 560 470, 650 470"/>
+      <path class="linea" id="f2" d="M440 560 C 520 560, 560 490, 650 490"/>
+      <path class="linea" id="f3" d="M1010 470 C 1080 470, 1100 395, 1170 395"/>
+      <path class="linea" id="f4" d="M1010 490 C 1080 490, 1100 575, 1170 575"/>
+      <path class="datos" d="M440 395 C 520 395, 560 470, 650 470"/>
+      <path class="datos" d="M440 560 C 520 560, 560 490, 650 490"/>
+      <path class="datos" d="M1010 470 C 1080 470, 1100 395, 1170 395"/>
+      <path class="datos" d="M1010 490 C 1080 490, 1100 575, 1170 575"/>
+      <path class="linea" d="M496 870 L 534 870"/><path class="linea" d="M936 870 L 974 870"/><path class="linea" d="M1376 870 L 1414 870"/>
+    </svg>
+    <div class="nodo" style="left:96px;top:330px;width:344px"><h4><i data-icono="laptop"></i>Web</h4><p>Desde cualquier navegador, en la PC de la oficina.</p></div>
+    <div class="nodo" style="left:96px;top:495px;width:344px"><h4><i data-icono="smartphone"></i>App</h4><p>Se instala en el celular, sin pasar por tiendas.</p></div>
+    <div class="nodo central" style="left:650px;top:345px;width:360px"><img src="img/portada-cubo.png" alt=""><h4>prisma</h4>
+      <div class="chips" style="justify-content:center"><span><i data-marca="react"></i>React</span><span><i data-marca="pwa"></i>PWA</span></div></div>
+    <div class="nodo" style="left:1170px;top:330px;width:654px"><h4><i data-marca="cloudflare"></i>Cloudflare</h4><p>Publicada en la red global de Cloudflare: rápida y segura desde cualquier lugar.</p></div>
+    <div class="nodo" style="left:1170px;top:500px;width:654px"><h4><i data-marca="supabase"></i>Supabase</h4>
+      <div class="chips"><span><i data-marca="postgresql"></i>Base de datos</span><span><i data-icono="key-round"></i>Usuarios y accesos</span><span><i data-icono="radio"></i>Tiempo real</span><span><i data-icono="image"></i>Archivos y fotos</span><span><i data-icono="zap"></i>Funciones</span></div></div>
+    <p class="alta-titulo">Así entra un empleado nuevo</p>
+    <div class="alta" style="left:96px"><span class="num">01</span><span class="tile"><i data-icono="user-plus"></i></span><b>El administrador lo da de alta</b><span>Nombre, mail y rol.</span></div>
+    <div class="alta" style="left:536px"><span class="num">02</span><span class="tile"><i data-icono="send"></i></span><b>PRISMA le envía la invitación</b><span>Automáticamente, desde la nube.</span></div>
+    <div class="alta mail" style="left:976px">
+      <div class="mail-barra"><i data-marca="gmail"></i>Gmail · Recibidos</div>
+      <div class="mail-cuerpo"><b>Te invitaron a PRISMA</b><small>Tu empresa te sumó como técnico. Creá tu contraseña para entrar.</small><span class="boton">Definir contraseña</span></div>
+    </div>
+    <div class="alta" style="left:1416px;width:408px"><span class="num">04</span><span class="tile"><i data-icono="circle-check-big"></i></span><b>Define su contraseña y entra</b><span>Desde la web o la app instalada.</span></div>
+    <div class="punto-viaje"></div>
+  </section>
+
+  <!-- ============ 7 · CICLO ============ -->
+  <section class="slide" data-slide="ciclo" data-notas="Recorrer el ciclo de punta a punta. Remarcar que todo queda registrado en el historial del equipo.">
+    <p class="etiqueta" style="left:96px;top:120px">El ciclo completo</p>
+    <h2 class="titulo" style="left:96px;top:168px;width:1400px" data-palabras>Del pedido a la solución, <em>sin perder nada</em></h2>
+    <div class="en-vivo"><i></i>Todos ven cada cambio en tiempo real</div>
+    <div class="riel-ciclo"><i></i></div>
+    <div class="etapa" style="left:230px"><div class="bola"><i data-icono="ticket"></i></div><b>Se pide</b><span>Ticket en segundos</span><span class="quien">Usuario autorizado</span></div>
+    <div class="etapa" style="left:595px"><div class="bola"><i data-icono="clipboard-pen"></i></div><b>Se asigna</b><span>Orden con técnico y prioridad</span><span class="quien">Administrador</span></div>
+    <div class="etapa" style="left:960px"><div class="bola"><i data-icono="wrench"></i></div><b>Se resuelve</b><span>Tareas paso a paso</span><span class="quien">Técnico</span></div>
+    <div class="etapa" style="left:1325px"><div class="bola"><i data-icono="camera"></i></div><b>Se cierra</b><span>Con fotos de evidencia</span><span class="quien">Técnico</span></div>
+    <div class="etapa" style="left:1690px"><div class="bola"><i data-icono="history"></i></div><b>Se registra</b><span>Historial del equipo</span><span class="quien">Para siempre</span></div>
+    <div class="detalle-ciclo">
+      <div class="recorte"><img src="img/app/ticket-card.png" alt=""></div>
+      <div class="recorte"><img src="img/app/or-card.png" alt=""></div>
+      <div class="recorte"><img src="img/app/tarea-tecnico.png" alt=""></div>
+      <div class="evidencia">
+        <div class="fotos">
+          <span class="foto" style="background:linear-gradient(135deg,#2c4a4f,#14272a)"><i data-icono="image"></i></span>
+          <span class="foto" style="background:linear-gradient(135deg,#3b3f45,#1b1f23)"><i data-icono="image"></i></span>
+          <span class="foto" style="background:linear-gradient(135deg,#2f4a3c,#142a1e)"><i data-icono="image"></i></span>
+        </div>
+        <div><b>Evidencia del trabajo</b><span>3 fotos adjuntas · comprimidas automáticamente</span></div>
+        <span class="listo"><i data-icono="circle-check-big"></i>Orden cerrada</span>
+      </div>
+      <div class="historial">
+        <div class="eq"><span class="tile"><i data-icono="air-vent"></i></span><div><b>Split 03 · Sala de reuniones</b><small>Casa Central · Piso 2</small></div></div>
+        <ol>
+          <li><b>OR #212</b>Recarga de gas · hoy</li>
+          <li><b>OR #187</b>Limpieza de filtros · sep.</li>
+          <li><b>OR #140</b>Cambio de capacitor · jun.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · TELÉFONO ============ -->
+  <section class="slide" data-slide="telefono" data-notas="Mostrar el QR e invitar a escanearlo: la app está publicada y se puede probar ahora mismo.">
+    <p class="etiqueta" style="left:96px;top:196px">Para el técnico</p>
+    <h2 class="titulo" style="left:96px;top:244px;width:860px" data-palabras>Todo su trabajo,<br><em>en el bolsillo</em></h2>
+    <div class="funciones">
+      <div class="funcion"><span class="tile"><i data-icono="bell-ring"></i></span><div><b>Cada orden, al instante</b><span>Notificaciones en tiempo real</span></div></div>
+      <div class="funcion"><span class="tile"><i data-icono="scan-barcode"></i></span><div><b>Escanea el equipo</b><span>Código de barras y lectura de etiquetas</span></div></div>
+      <div class="funcion"><span class="tile"><i data-icono="camera"></i></span><div><b>Sube la evidencia</b><span>Fotos del trabajo terminado</span></div></div>
+      <div class="funcion"><span class="tile"><i data-icono="download"></i></span><div><b>Se instala como app</b><span>Sin tiendas, en Android y iPhone</span></div></div>
+    </div>
+    <canvas id="telefono" width="940" height="1080"></canvas>
+  </section>
+
+  <!-- ============ 9 · PREVENTIVOS ============ -->
+  <section class="slide" data-slide="preventivos" data-notas="Se define el plan una vez y PRISMA genera las órdenes solo, a tiempo. Nadie tiene que acordarse.">
+    <p class="etiqueta" style="left:96px;top:196px">Preventivos automáticos</p>
+    <h2 class="titulo" style="left:96px;top:244px;width:860px" data-palabras>El mantenimiento que <em>se programa solo</em></h2>
+    <p class="bajada" style="left:96px;top:470px;width:820px" data-palabras>Definís el plan una vez: qué equipos, cada cuánto y qué tareas. PRISMA genera cada orden a tiempo.</p>
+    <div class="recorte plan-prev" style="left:96px;top:640px;width:860px"><img src="img/app/plan-card.png" alt="Plan preventivo"></div>
+    <div class="dato-grande" style="left:96px;top:820px"><b>0</b><span>preventivos olvidados desde que usás PRISMA</span></div>
+    <div class="calendario">
+      <header><b>Diciembre</b><span>Plan: limpieza de filtros · semanal</span></header>
+      <div class="dias"></div>
+    </div>
+    <div class="or-auto"><span class="tile"><i data-icono="repeat"></i></span><div><b>OR #231 · Limpieza de filtros</b><span>Split 04 · Anexo Corrientes</span></div><span class="auto">Generada sola</span></div>
+  </section>
+
+  <!-- ============ 10 · DATOS ============ -->
+  <section class="slide" data-slide="datos" data-notas="Con PRISMA, el mantenimiento se mide: tiempos de atención, tasa de cierre y equipos con más fallas. Y se exporta en PDF.">
+    <p class="etiqueta" style="left:96px;top:120px">Decisiones con datos</p>
+    <h2 class="titulo" style="left:96px;top:168px;width:1500px" data-palabras>Lo que no se mide, <em>no se puede mejorar</em></h2>
+    <div class="kpis">
+      <div class="kpi"><small>Tiempo de atención<i data-icono="timer"></i></small><div class="valor"><b data-contar="3.8" data-decimales="1">0</b><span>h prom.</span></div><span class="delta"><i data-icono="trending-down"></i>62 % más rápido</span></div>
+      <div class="kpi"><small>Cierre de órdenes<i data-icono="hourglass"></i></small><div class="valor"><b data-contar="4.2" data-decimales="1">0</b><span>días prom.</span></div><span class="delta"><i data-icono="trending-down"></i>3 veces menos</span></div>
+      <div class="kpi"><small>Tasa de cierre<i data-icono="gauge"></i></small><div class="valor"><b data-contar="86">0</b><span>% resueltas</span></div><span class="delta"><i data-icono="trending-up"></i>+41 puntos</span></div>
+      <div class="kpi"><small>Equipos con historial<i data-icono="history"></i></small><div class="valor"><b data-contar="100">0</b><span>%</span></div><span class="delta"><i data-icono="trending-up"></i>antes: casi ninguno</span></div>
+    </div>
+    <div class="ventana" style="left:96px;top:660px;width:640px"><div class="ventana-barra"><span class="ventana-titulo">Flujo de órdenes</span><span class="ventana-ruta">Panel de análisis</span></div><img src="img/app/grafico.png" alt=""></div>
+    <div class="ventana" style="left:770px;top:660px;width:440px"><div class="ventana-barra"><span class="ventana-titulo">Atención requerida</span><span class="ventana-ruta">Hoy</span></div><img src="img/app/atencion.png" alt=""></div>
+    <div class="pdf"><span class="hoja"></span><div><b>Informe en PDF</b><span>Listo para la gerencia, con un clic.</span></div></div>
+  </section>
+
+  <!-- ============ 11 · POR QUÉ ============ -->
+  <section class="slide" data-slide="porque" data-notas="Cerrar la venta: no hay en la región otro sistema pensado para oficinas y empresas, en español, listo desde el día uno y desde el celular.">
+    <p class="etiqueta" style="left:96px;top:120px">Por qué PRISMA</p>
+    <h2 class="titulo" style="left:96px;top:168px;width:1600px" data-palabras>El único pensado para <em>nuestra región</em></h2>
+    <div class="comparacion">
+      <div class="columna-prisma"></div>
+      <div class="fila-c cabeza"><span></span><span>Planillas y WhatsApp</span><span>Sistemas extranjeros</span><span class="prisma-col"><img src="img/portada-cubo.png" alt="">prisma</span></div>
+      <div class="fila-c"><span>En español y a la medida de la región</span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>Listo para usar desde el primer día</span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>En el celular, sin instalar nada</span><span><i class="marca-medio" data-icono="minus"></i></span><span><i class="marca-medio" data-icono="minus"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>Pedidos, órdenes y técnicos conectados</span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-si" data-icono="check"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>Preventivos automáticos</span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-si" data-icono="check"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>Historial completo de cada equipo</span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-medio" data-icono="minus"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>Pensado para oficinas, no para fábricas</span><span><i class="marca-medio" data-icono="minus"></i></span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+      <div class="fila-c"><span>Simple de aprender</span><span><i class="marca-si" data-icono="check"></i></span><span><i class="marca-no" data-icono="x"></i></span><span><i class="marca-si" data-icono="check"></i></span></div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · EQUIPO ============ -->
+  <section class="slide" data-slide="equipo" data-notas="Presentar al equipo. Para poner las fotos: guardarlas en web/img/equipo/ y reemplazar el ícono de cada integrante.">
+    <p class="etiqueta" style="left:96px;top:196px">El equipo</p>
+    <h2 class="titulo" style="left:96px;top:244px;width:1400px" data-palabras>Somos <em>PRISMA</em></h2>
+    <div class="integrantes">
+      <div class="integrante"><div class="foto"><i data-icono="user"></i></div><b>Agustín Meneses</b><span>[Rol]</span></div>
+      <div class="integrante"><div class="foto"><i data-icono="user"></i></div><b>[Integrante 2]</b><span>[Rol]</span></div>
+      <div class="integrante"><div class="foto"><i data-icono="user"></i></div><b>[Integrante 3]</b><span>[Rol]</span></div>
+      <div class="integrante"><div class="foto"><i data-icono="user"></i></div><b>[Integrante 4]</b><span>[Rol]</span></div>
+      <div class="integrante"><div class="foto"><i data-icono="user"></i></div><b>[Integrante 5]</b><span>[Rol]</span></div>
+      <div class="integrante"><div class="foto"><i data-icono="user"></i></div><b>[Integrante 6]</b><span>[Rol]</span></div>
+    </div>
+    <p class="bajada" style="left:0;right:0;top:860px;text-align:center;font-size:26px">[Carrera] · [Facultad] · 2026</p>
+  </section>
+
+  <!-- ============ 13 · CIERRE ============ -->
+  <section class="slide" data-slide="cierre" data-notas="Cerrar con el QR en pantalla e invitar a probarlo. «Gracias.»">
+    <p class="bajada cierre-gracias" data-palabras>El mantenimiento de tu empresa, en un solo lugar.</p>
+    <div class="qr-caja cierre-qr"><div class="qr" data-qr="https://dev-seminario.prisma-dev.workers.dev/"></div><div><b>Probalo ahora</b><span>dev-seminario.prisma-dev.workers.dev</span></div></div>
+  </section>
+
+  <div id="logo"><img class="logo-cubo" src="img/portada-cubo.png" alt=""><img class="logo-palabra" src="img/portada-palabra.png" alt="prisma"></div>
+  <video id="video-intro" src="video/intro-prisma.mp4" muted playsinline preload="auto"></video>
+  <div id="progreso"></div>
+  <div id="notas"></div>
+  <div id="inicio"><p>Presioná <kbd>→</kbd> o hacé clic para comenzar · <kbd>F</kbd> pantalla completa</p></div>
+
+</div></div>
+<script src="app.js"></script>
+</body>
+</html>

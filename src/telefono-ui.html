@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PRISMA · pantalla del técnico</title>
+<link rel="stylesheet" href="./marca.css">
+<style>
+  html, body { margin: 0; background: transparent; }
+  body { font-family: var(--fuente-cuerpo); color: var(--texto); display: flex; gap: 40px; padding: 0; align-items: flex-start; }
+  .pantalla { width: 390px; height: 844px; background: var(--fondo); position: relative; overflow: hidden; }
+  .pantalla::before { content: ''; position: absolute; inset: 0; background: radial-gradient(420px 300px at 80% 0%, rgba(45,122,123,.22), transparent 70%); }
+  .estado { position: relative; height: 54px; display: flex; justify-content: space-between; align-items: center; padding: 0 30px 0 34px; font-weight: 600; font-size: 16px; }
+  .estado .der { display: flex; gap: 6px; align-items: center; }
+  .estado svg { width: 18px; height: 18px; stroke: #fff; }
+  .cabecera { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px 14px; }
+  .cabecera h1 { margin: 0; font-family: var(--fuente-titular); font-weight: 500; font-size: 30px; }
+  .cabecera .der { display: flex; gap: 12px; align-items: center; }
+  .campana { position: relative; width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--borde); display: grid; place-items: center; }
+  .campana svg { width: 20px; height: 20px; stroke: var(--texto-secundario); }
+  .campana b { position: absolute; top: -5px; right: -5px; background: #ef4444; font-size: 11px; font-weight: 600; min-width: 18px; height: 18px; border-radius: 9px; display: grid; place-items: center; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #3cc2c2, #194f50); display: grid; place-items: center; font-weight: 600; font-size: 15px; }
+  .buscador { position: relative; margin: 0 20px 14px; height: 44px; border-radius: 12px; background: var(--superficie); border: 1px solid var(--borde); display: flex; align-items: center; gap: 10px; padding: 0 14px; color: var(--texto-atenuado); font-size: 14px; }
+  .buscador svg { width: 18px; height: 18px; stroke: var(--texto-atenuado); }
+  .filtros { position: relative; display: flex; gap: 8px; margin: 0 20px 16px; }
+  .filtros span { font-size: 12.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--borde); color: var(--texto-secundario); }
+  .filtros span.activo { background: rgba(60,194,194,.14); border-color: var(--primario); color: var(--primario-brillante); }
+  .lista { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 0 16px; }
+  .tarjeta { border-radius: 16px; background: var(--superficie); border: 1px solid var(--borde); padding: 14px 16px 14px 18px; position: relative; overflow: hidden; }
+  .tarjeta::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--primario-brillante); }
+  .tarjeta.nueva { border-color: var(--primario); box-shadow: 0 0 0 1px rgba(60,194,194,.35), 0 0 30px rgba(60,194,194,.18); }
+  .fila { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .insignia { font-family: ui-monospace, 'Cascadia Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: .06em; padding: 4px 9px; border-radius: 999px; border: 1px solid; }
+  .insignia.or { color: var(--primario-brillante); border-color: rgba(60,194,194,.45); background: rgba(60,194,194,.08); }
+  .insignia.alta { color: #f26b6b; border-color: rgba(239,68,68,.45); background: rgba(239,68,68,.08); }
+  .insignia.media { color: #e8b44c; border-color: rgba(232,180,76,.45); background: rgba(232,180,76,.08); }
+  .insignia.baja { color: #7fb4e6; border-color: rgba(127,180,230,.4); background: rgba(127,180,230,.08); }
+  .estado-chip { margin-left: auto; font-size: 11.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--primario); color: var(--primario-brillante); }
+  .estado-chip.pendiente { border-color: #e8b44c; color: #e8b44c; }
+  .tarjeta h2 { margin: 10px 0 2px; font-size: 16.5px; font-weight: 600; }
+  .tarjeta p { margin: 0 0 10px; font-size: 13px; color: var(--texto-secundario); }
+  .dato { display: flex; gap: 8px; align-items: center; font-size: 12.5px; color: #c9d6d8; margin-top: 4px; }
+  .dato svg { width: 15px; height: 15px; stroke: var(--texto-secundario); flex: none; }
+  .avance { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 11.5px; color: var(--texto-secundario); }
+  .avance .barra { flex: 1; height: 5px; border-radius: 3px; background: #15292c; overflow: hidden; }
+  .avance .barra i { display: block; height: 100%; background: var(--primario-brillante); border-radius: 3px; }
+  .nav { position: absolute; left: 0; right: 0; bottom: 0; height: 84px; background: rgba(6,11,13,.96); border-top: 1px solid var(--borde); display: flex; justify-content: space-around; padding-top: 12px; }
+  .nav div { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11.5px; color: var(--texto-atenuado); }
+  .nav div.activo { color: var(--primario-brillante); }
+  .nav svg { width: 22px; height: 22px; stroke: currentColor; }
+  .aviso { width: 362px; border-radius: 22px; background: rgba(22, 32, 35, 0.97); border: 1px solid #2c4246; padding: 14px 16px; display: flex; gap: 12px; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,.5); }
+  .aviso .ico { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #2f7770, #123f3c); display: grid; place-items: center; flex: none; }
+  .aviso .ico img { width: 26px; }
+  .aviso b { display: block; font-size: 14px; font-weight: 600; }
+  .aviso span { font-size: 13px; color: #c9d6d8; }
+  .aviso small { margin-left: auto; align-self: flex-start; font-size: 11.5px; color: var(--texto-atenuado); }
+</style>
+</head>
+<body>
+  <div class="pantalla" data-pieza="telefono-pantalla">
+    <div class="estado"><span>9:41</span><span class="der"><i data-icono="signal"></i><i data-icono="wifi"></i><i data-icono="battery-full"></i></span></div>
+    <div class="cabecera">
+      <h1>Mis tareas</h1>
+      <div class="der"><span class="campana"><i data-icono="bell"></i><b>1</b></span><span class="avatar">TC</span></div>
+    </div>
+    <div class="buscador"><i data-icono="search"></i>Buscar por tarea, equipo o N.º de OR</div>
+    <div class="filtros"><span class="activo">Todas · 3</span><span>Pendientes</span><span>En curso</span></div>
+    <div class="lista">
+      <div class="tarjeta nueva">
+        <div class="fila"><span class="insignia or">OR #212</span><span class="insignia alta">PRIORIDAD ALTA</span><span class="estado-chip pendiente">Pendiente</span></div>
+        <h2>Aire acondicionado sin enfriar</h2>
+        <p>Revisar gas y limpiar la unidad exterior.</p>
+        <div class="dato"><i data-icono="air-vent"></i>Split 03 · Daikin 6000 fg</div>
+        <div class="dato"><i data-icono="map-pin"></i>Casa Central · Piso 2 · Sala de reuniones</div>
+        <div class="avance">Tareas<span class="barra"><i style="width:0%"></i></span>0/3</div>
+      </div>
+      <div class="tarjeta">
+        <div class="fila"><span class="insignia or">OR #209</span><span class="insignia media">PRIORIDAD MEDIA</span><span class="estado-chip">En curso</span></div>
+        <h2>Cambio de filtros</h2>
+        <p>Plan preventivo · cada 3 meses</p>
+        <div class="dato"><i data-icono="map-pin"></i>Anexo Corrientes · Piso 1</div>
+        <div class="avance">Tareas<span class="barra"><i style="width:50%"></i></span>2/4</div>
+      </div>
+      <div class="tarjeta">
+        <div class="fila"><span class="insignia or">OR #205</span><span class="insignia baja">PRIORIDAD BAJA</span><span class="estado-chip">En curso</span></div>
+        <h2>Revisión de impresora</h2>
+        <div class="dato"><i data-icono="map-pin"></i>Sucursal Resistencia · Bedelía</div>
+        <div class="avance">Tareas<span class="barra"><i style="width:50%"></i></span>1/2</div>
+      </div>
+    </div>
+    <div class="nav">
+      <div class="activo"><i data-icono="clipboard-list"></i>Mis tareas</div>
+      <div><i data-icono="scan-barcode"></i>Escanear</div>
+      <div><i data-icono="monitor"></i>Equipos</div>
+      <div><i data-icono="user"></i>Perfil</div>
+    </div>
+  </div>
+
+  <div class="aviso" data-pieza="telefono-aviso">
+    <span class="ico"><img src="../salida/piezas/portada-cubo.png" alt=""></span>
+    <div><b>Nueva orden asignada</b><span>OR #212 · Aire acondicionado sin enfriar</span></div>
+    <small>ahora</small>
+  </div>
+<script type="module">
+  const cargar = async (nombre) => (await fetch(`../node_modules/lucide-static/icons/${nombre}.svg`)).text();
+  for (const el of document.querySelectorAll('[data-icono]')) el.outerHTML = await cargar(el.dataset.icono);
+  await document.fonts.ready;
+  window.piezasListas = true;
+</script>
+</body>
+</html>

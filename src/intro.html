@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PRISMA · intro</title>
+<link rel="stylesheet" href="./marca.css">
+<style>
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--fondo); }
+  html.transparente, html.transparente body { background: transparent; }
+  #lienzo { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+  #palabra {
+    position: absolute; transform: translateY(-50%);
+    font-family: var(--fuente-titular); font-weight: 400; font-size: 200px; line-height: 1;
+    letter-spacing: 0.5px; color: var(--texto); white-space: nowrap;
+    display: flex;
+  }
+  /* Máscara por letra: la letra sube desde abajo de su propia línea */
+  #palabra .mascara { display: inline-block; overflow: hidden; padding: 0.06em 0 0.14em; }
+  #palabra .letra { display: inline-block; will-change: transform; }
+</style>
+<script type="importmap">
+  { "imports": { "three": "../node_modules/three/build/three.module.js", "three/addons/": "../node_modules/three/examples/jsm/" } }
+</script>
+</head>
+<body>
+<canvas id="lienzo" width="1920" height="1080"></canvas>
+<div id="palabra" aria-label="prisma"></div>
+<script type="module">
+  import { crearIntro } from './intro.js';
+
+  const parametros = new URLSearchParams(location.search);
+  const palabra = document.getElementById('palabra');
+  for (const caracter of 'prisma') {
+    const mascara = document.createElement('span');
+    mascara.className = 'mascara';
+    const letra = document.createElement('span');
+    letra.className = 'letra';
+    letra.textContent = caracter;
+    mascara.appendChild(letra);
+    palabra.appendChild(mascara);
+  }
+  await document.fonts.load('400 200px Chillax');
+  await document.fonts.ready;
+
+  const intro = crearIntro({
+    lienzo: document.getElementById('lienzo'),
+    palabra,
+    letras: [...palabra.querySelectorAll('.letra')],
+    escalaPixel: Number(parametros.get('escala') ?? 1),
+  });
+
+  // Capas para armar la portada del PPTX: fondo | cubo | palabra
+  window.componer = (t, capas) => {
+    document.documentElement.classList.toggle('transparente', Boolean(capas && !capas.fondo));
+    intro.componer(t, capas);
+  };
+  window.duracion = intro.duracion;
+
+  if (parametros.has('t')) {
+    window.componer(Number(parametros.get('t')));
+  } else if (parametros.get('modo') !== 'captura') {
+    const inicio = performance.now();
+    const cuadro = () => {
+      const t = (performance.now() - inicio) / 1000;
+      intro.componer(t);
+      if (t < intro.duracion) requestAnimationFrame(cuadro);
+    };
+    requestAnimationFrame(cuadro);
+  }
+  window.introLista = true;
+</script>
+</body>
+</html>

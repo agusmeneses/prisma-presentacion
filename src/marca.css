@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=block');
+@import url('https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=block');
+
+/* Tokens tomados de src/index.css del sistema PRISMA */
+:root {
+  --fondo: #070e10;
+  --fondo-profundo: #040809;
+  --superficie: #0b1719;
+  --superficie-hover: #102124;
+  --borde: #1b383c;
+  --borde-sutil: rgba(45, 122, 122, 0.25);
+  --primario: #2d7a7b;
+  --primario-brillante: #3cc2c2;
+  --primario-opaco: #48a68b;
+  --texto: #ffffff;
+  --texto-secundario: #8ba3a6;
+  --texto-atenuado: #5a7376;
+  --peligro: #ef4444;
+  --aviso: #f5a524;
+  --fuente-titular: 'Chillax', 'Poppins', sans-serif;
+  --fuente-cuerpo: 'Poppins', sans-serif;
+}

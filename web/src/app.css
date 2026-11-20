@@ -1,0 +1,11 @@
+@import './estilos.css';
+
+/* Fuentes incrustadas: la presentación funciona sin internet y abriendo el archivo con doble clic */
+@font-face { font-family: 'Chillax'; font-weight: 400; src: url('../../assets/fuentes/chillax/Chillax_Complete/Fonts/WEB/fonts/Chillax-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Chillax'; font-weight: 500; src: url('../../assets/fuentes/chillax/Chillax_Complete/Fonts/WEB/fonts/Chillax-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Chillax'; font-weight: 600; src: url('../../assets/fuentes/chillax/Chillax_Complete/Fonts/WEB/fonts/Chillax-Semibold.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 300; src: url('../../assets/fuentes/Poppins-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 400; src: url('../../assets/fuentes/Poppins-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('../../assets/fuentes/Poppins-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 600; src: url('../../assets/fuentes/Poppins-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Caveat'; font-weight: 400 700; src: url('../../assets/fuentes/Caveat.ttf') format('truetype'); }

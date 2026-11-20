@@ -1,0 +1,22 @@
+node_modules/
+
+# Capturas crudas del sistema (contienen datos de usuarios de prueba sin difuminar)
+salida/app/
+# Capturas de revisión y pruebas descartadas
+salida/web/
+salida/flujo/
+salida/cuadros/
+salida/revision/
+salida/pruebas-pptx/
+salida/hoja-*.png
+
+# Chillax se descarga de Fontshare en cada instalación: su licencia no permite redistribuirla
+assets/fuentes/chillax/
+assets/fuentes/*.zip
+
+# Generados por npm run build (incluyen la fuente incrustada)
+web/index.html
+web/app.js
+web/app.css
+web/img/portada-*.png
+web/video/

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PRISMA · piezas</title>
+<link rel="stylesheet" href="./marca.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=block">
+<style>
+  html, body { margin: 0; background: transparent; }
+  body { font-family: var(--fuente-cuerpo); color: var(--texto); padding: 140px; display: flex; flex-direction: column; gap: 260px; align-items: flex-start; }
+  [data-pieza] { flex: none; }
+
+  /* ---------- Fondos de slide (1920×1080) ---------- */
+  .fondo { width: 1920px; height: 1080px; position: relative; overflow: hidden; background: var(--fondo); }
+  .fondo::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(900px 700px at var(--hx) var(--hy), rgba(45, 122, 123, 0.20), transparent 70%); }
+  .fondo::after { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.45) 100%); }
+
+  /* ---------- Íconos de dolores ---------- */
+  .icono { width: 88px; height: 88px; border-radius: 22px; display: grid; place-items: center;
+    background: rgba(60, 194, 194, 0.10); border: 1.5px solid rgba(60, 194, 194, 0.38); }
+  .icono svg { width: 40px; height: 40px; stroke: var(--primario-brillante); stroke-width: 1.75; }
+
+  /* ---------- Chat ---------- */
+  .chat { width: 520px; border-radius: 28px; background: #151c1f; border: 1px solid #263034;
+    box-shadow: 0 40px 80px rgba(0,0,0,.55); overflow: hidden; }
+  .chat header { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: #1b2427; border-bottom: 1px solid #263034; }
+  .chat .avatar { width: 44px; height: 44px; border-radius: 50%; background: #3a4448; display: grid; place-items: center; }
+  .chat .avatar svg { width: 22px; height: 22px; stroke: #aab6b9; }
+  .chat header b { font-weight: 500; font-size: 19px; display: block; }
+  .chat header small { color: #8a979b; font-size: 14px; }
+  .chat .cuerpo { padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .burbuja { max-width: 400px; padding: 12px 16px 10px; border-radius: 18px 18px 18px 6px; background: #252e32; font-size: 18px; line-height: 1.4; }
+  .burbuja .quien { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .burbuja .hora { display: block; text-align: right; color: #7d898d; font-size: 12px; margin-top: 4px; }
+  .burbuja.propia { align-self: flex-end; border-radius: 18px 18px 6px 18px; background: #23413c; }
+  .sin-leer { align-self: center; margin-top: 6px; font-size: 14px; color: #c9d3d5; background: #2a3437; padding: 6px 14px; border-radius: 999px; }
+
+  /* ---------- Post-it ---------- */
+  .postit { width: 300px; height: 280px; padding: 30px 30px; background: linear-gradient(170deg, #fbe27a, #f2cf4c);
+    color: #3b3212; font-family: 'Caveat', cursive; font-size: 46px; line-height: 1.1; box-shadow: 0 30px 50px rgba(0,0,0,.45);
+    border-radius: 3px 3px 26px 3px; }
+  .postit s { text-decoration-thickness: 3px; }
+
+  /* ---------- Planilla ---------- */
+  .planilla { width: 560px; border-radius: 14px; overflow: hidden; background: #f4f6f6; color: #1d2527; box-shadow: 0 40px 80px rgba(0,0,0,.5); font-size: 17px; }
+  .planilla .barra { display: flex; align-items: center; gap: 10px; padding: 12px 18px; background: #dfe5e5; font-size: 15px; color: #39474a; }
+  .planilla .barra svg { width: 20px; height: 20px; stroke: #4c6b56; }
+  .planilla table { border-collapse: collapse; width: 100%; }
+  .planilla th, .planilla td { border: 1px solid #cfd8d8; padding: 10px 14px; text-align: left; }
+  .planilla th { background: #e9eeee; font-weight: 500; color: #4a5a5d; font-size: 15px; }
+  .planilla .duda { color: #b23b3b; font-weight: 500; }
+  .planilla .vacia { color: #a0abad; }
+
+  /* ---------- Llamadas perdidas ---------- */
+  .aviso { width: 470px; display: flex; gap: 16px; align-items: center; padding: 18px 22px; border-radius: 22px;
+    background: rgba(28, 34, 37, 0.96); border: 1px solid #2d383c; box-shadow: 0 30px 60px rgba(0,0,0,.5); }
+  .aviso .circulo { width: 52px; height: 52px; border-radius: 50%; background: rgba(239, 68, 68, 0.16); display: grid; place-items: center; flex: none; }
+  .aviso .circulo svg { width: 26px; height: 26px; stroke: #f26b6b; }
+  .aviso b { display: block; font-weight: 500; font-size: 19px; }
+  .aviso small { color: #8f9ca0; font-size: 15px; }
+</style>
+</head>
+<body>
+  <div data-pieza="fondo-portada" class="fondo" style="--hx: 50%; --hy: 45%"></div>
+  <div data-pieza="fondo-problema" class="fondo" style="--hx: 78%; --hy: 50%"></div>
+
+  <div data-pieza="icono-pedidos" class="icono" data-icono="message-circle-warning"></div>
+  <div data-pieza="icono-historial" class="icono" data-icono="history"></div>
+  <div data-pieza="icono-preventivos" class="icono" data-icono="calendar-x-2"></div>
+  <div data-pieza="icono-datos" class="icono" data-icono="eye-off"></div>
+
+  <div data-pieza="caos-chat" class="chat">
+    <header>
+      <span class="avatar" data-icono-simple="users"></span>
+      <div><b>Oficina · avisos</b><small>23 participantes</small></div>
+    </header>
+    <div class="cuerpo">
+      <div class="burbuja"><span class="quien" style="color:#e0a35a">Recepción</span>El aire de la sala de reuniones sigue sin enfriar<span class="hora">09:12</span></div>
+      <div class="burbuja"><span class="quien" style="color:#7fb4e6">Administración</span>¿Alguien le avisó al técnico?<span class="hora">09:40</span></div>
+      <div class="burbuja propia">Ya avisé el lunes…<span class="hora">11:03</span></div>
+      <span class="sin-leer">48 mensajes sin leer</span>
+    </div>
+  </div>
+
+  <div data-pieza="caos-postit" class="postit">Cambiar filtros<br><s>¿marzo?</s> ¿abril?<br>preguntar quién…</div>
+
+  <div data-pieza="caos-planilla" class="planilla">
+    <div class="barra"><span data-icono-simple="file-spreadsheet"></span>mantenimiento_FINAL_v3 (2).xlsx</div>
+    <table>
+      <tr><th>Equipo</th><th>Último service</th><th>Estado</th></tr>
+      <tr><td>Impresora 2° piso</td><td class="vacia">—</td><td class="duda">¿?</td></tr>
+      <tr><td>Aire sala de reuniones</td><td>12/03</td><td class="duda">Pendiente</td></tr>
+      <tr><td>Bomba de agua</td><td class="vacia">—</td><td class="vacia"></td></tr>
+    </table>
+  </div>
+
+  <div data-pieza="caos-llamadas" class="aviso">
+    <span class="circulo" data-icono-simple="phone-missed"></span>
+    <div><b>3 llamadas perdidas</b><small>Mantenimiento · hace 2 h</small></div>
+  </div>
+
+<script type="module">
+  // Inserta los SVG de Lucide (la misma librería de íconos que usa PRISMA)
+  const cargar = async (nombre) => (await fetch(`../node_modules/lucide-static/icons/${nombre}.svg`)).text();
+  for (const el of document.querySelectorAll('[data-icono], [data-icono-simple]')) {
+    el.innerHTML = await cargar(el.dataset.icono ?? el.dataset.iconoSimple);
+  }
+  await document.fonts.ready;
+  window.piezasListas = true;
+</script>
+</body>
+</html>

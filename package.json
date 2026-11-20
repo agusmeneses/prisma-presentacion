@@ -1,0 +1,41 @@
+{
+  "name": "prisma-presentacion",
+  "version": "1.0.0",
+  "description": "Presentación comercial de PRISMA: intro 3D, slides animadas y PDF de respaldo",
+  "scripts": {
+    "postinstall": "node scripts/descargar-fuentes.mjs && node scripts/build-web.mjs",
+    "build": "node scripts/descargar-fuentes.mjs && node scripts/build-web.mjs",
+    "servir": "node scripts/serve.mjs 5180",
+    "intro": "node scripts/render-intro.mjs",
+    "telefono": "node scripts/build-web.mjs --telefono",
+    "capturar": "node scripts/capturar-app.mjs && node scripts/recortar-app.mjs",
+    "pdf": "node scripts/exportar-pdf.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "gsap": "^3.15.1",
+    "jszip": "^3.10.2",
+    "lucide-static": "^1.77.0",
+    "playwright": "^1.65.1",
+    "pptxgenjs": "^4.0.1",
+    "three": "^0.187.0"
+  },
+  "allowScripts": {
+    "ffmpeg-static@5.3.0": true,
+    "esbuild@0.28.2": true
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4",
+    "simple-icons": "^16.38.0"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
+}
