@@ -73,7 +73,8 @@ Los mails y teléfonos de la lista de técnicos se difuminan solos (`scripts/rec
 
 La carpeta publicable es `web/` y el comando de build es `npm run build`.
 
-- **Cloudflare Pages:** *Workers & Pages → Create → Pages → Connect to Git*, elegir este repo, *Build command* `npm run build`, *Build output directory* `web`.
+- **Cloudflare Pages (proyecto `prisma-presentacion`, separado del de la app):** con la sesión iniciada (`npx wrangler login`), `npm run publicar` arma y sube la versión nueva.
+  Para que se publique solo en cada push: *Workers & Pages → Create → Pages → Connect to Git*, elegir este repo, *Build command* `npm run build`, *Build output directory* `web`.
 - **Vercel:** importar el repo; `vercel.json` ya tiene la configuración.
 
 ## Licencias de recursos

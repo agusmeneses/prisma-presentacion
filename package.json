@@ -9,7 +9,8 @@
     "intro": "node scripts/render-intro.mjs",
     "telefono": "node scripts/build-web.mjs --telefono",
     "capturar": "node scripts/capturar-app.mjs && node scripts/recortar-app.mjs",
-    "pdf": "node scripts/exportar-pdf.mjs"
+    "pdf": "node scripts/exportar-pdf.mjs",
+    "publicar": "npm run build && wrangler pages deploy web --project-name prisma-presentacion --branch main --commit-dirty=true"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +33,8 @@
     "esbuild": "^0.28.2",
     "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.4",
-    "simple-icons": "^16.38.0"
+    "simple-icons": "^16.38.0",
+    "wrangler": "^4.166.0"
   },
   "private": true,
   "engines": {
