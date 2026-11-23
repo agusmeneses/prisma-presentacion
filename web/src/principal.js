@@ -104,7 +104,7 @@ const definiciones = {
   },
 
   solucion: {
-    logo: LOGO_ESQUINA, halo: [50, 50],
+    logo: LOGO_ESQUINA, halo: [64, 52],
     preparar(el) {
       // Copia exacta del caos de la slide anterior, en el mismo lugar, para que la transición sea continua
       const copia = $('.caos-copia', el);
@@ -113,25 +113,66 @@ const definiciones = {
     construir(tl, el) {
       const nucleo = $('.nucleo', el);
       const cubo = $('img', nucleo);
-      tl.from(cubo, { scale: 0, rotation: -90, duration: 0.9, ease: 'back.out(1.7)' }, 0.1);
-      tl.to($('.halo', nucleo), { opacity: 0.7, duration: 0.8 }, 0.2);
+      const marco2d = $('.nucleo-marco2d', nucleo);
+      const halo = $('.halo', nucleo);
+      const sqMarco = $('.sq-marco', el);
+      const sqFlujo = $('.sq-flujo', el);
+      const sqCentro = $('.sq-centro-caja', el);
+      const diags = $$('.sq-diag', el);
+      const flechas = $$('.sq-flecha', el);
+      const vertices = $$('.sq-vertice', el);
+      const cards = $$('.verbo-v', el);
+
+      // 1) El prisma nace en el centro y absorbe todo el caos de la slide anterior
+      tl.from(cubo, { scale: 0, rotation: -90, duration: 0.85, ease: 'back.out(1.7)' }, 0.1);
+      tl.to(halo, { opacity: 0.72, duration: 0.75 }, 0.2);
       $$('.caos-copia .pieza', el).forEach((pieza, i) => {
         const cx = pieza.offsetLeft + pieza.offsetWidth / 2;
         const cy = pieza.offsetTop + pieza.offsetHeight / 2;
-        tl.to(pieza, { x: 960 - cx, y: 540 - cy, scale: 0.05, rotation: `+=${i % 2 ? 120 : -120}`, opacity: 0, duration: 0.95, ease: 'power3.in' }, 0.55 + i * 0.12);
+        tl.to(pieza, {
+          x: 960 - cx, y: 540 - cy, scale: 0.05, rotation: `+=${i % 2 ? 120 : -120}`,
+          opacity: 0, duration: 0.9, ease: 'power3.in',
+        }, 0.5 + i * 0.11);
       });
-      tl.fromTo($('.onda', nucleo), { scale: 0.3, opacity: 1 }, { scale: 3.2, opacity: 0, duration: 1.1, ease: 'expo.out' }, 1.75);
-      tl.to(cubo, { scale: 1.18, duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 1 }, 1.7);
-      tl.to($('.halo', nucleo), { opacity: 1, scale: 1.25, duration: 0.25, yoyo: true, repeat: 1 }, 1.7);
-      // El cubo vuela a la esquina y se funde con el logo
-      const destino = posicionesLogo(LOGO_ESQUINA).cubo;
-      tl.to(nucleo, { x: destino.x + 29 - 960, y: destino.y + 31 - 540, scale: 0.25, duration: 1.1, ease: 'expo.inOut' }, 2.3);
-      tl.to(nucleo, { opacity: 0, duration: 0.3 }, 3.1);
-      tl.from($('.etiqueta', el), { opacity: 0, x: -20, duration: 0.6 }, 2.5);
-      revelar(tl, $('.titulo', el), 2.55);
-      revelar(tl, $('.bajada', el), 2.9, { duration: 0.8, stagger: 0.02 });
-      subir(tl, $$('.verbo', el), 3.2, { stagger: 0.12 });
-      tl.from($$('.tarjetas-reales .recorte', el), { x: 160, opacity: 0, rotationY: -18, transformPerspective: 1400, duration: 1.1, ease: 'expo.out', stagger: 0.16 }, 2.8);
+      tl.fromTo($('.onda', nucleo), { scale: 0.3, opacity: 1 }, { scale: 3.1, opacity: 0, duration: 1.05, ease: 'expo.out' }, 1.65);
+      tl.to(cubo, { scale: 1.18, duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 1 }, 1.6);
+      tl.to(halo, { opacity: 1, scale: 1.25, duration: 0.24, yoyo: true, repeat: 1 }, 1.6);
+
+      // 2) El prisma viaja al centro del cuadrado 2D (1350, 560) y se adapta en el marco geométrico
+      tl.to(nucleo, { x: 390, y: 20, scale: 0.45, duration: 0.95, ease: 'expo.inOut' }, 2.1);
+      tl.to(halo, { opacity: 0.3, scale: 0.62, duration: 0.9, ease: 'power2.out' }, 2.2);
+      tl.fromTo(marco2d,
+        { scale: 0.6, rotation: 45, opacity: 0 },
+        { scale: 0.96, rotation: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 2.25);
+      tl.to(marco2d, { scale: 2.35, opacity: 0, duration: 0.6, ease: 'expo.out' }, 2.75);
+
+      // Textos de la columna izquierda
+      tl.from($('.etiqueta', el), { opacity: 0, x: -20, duration: 0.6 }, 2.3);
+      revelar(tl, $('.titulo', el), 2.35);
+      revelar(tl, $('.bajada', el), 2.7, { duration: 0.75, stagger: 0.02 });
+
+      // 3) Del prisma nace y se despliega el cuadrado 2D con sus diagonales y vértices
+      tl.to($('.sq-halo', el), { opacity: 0.9, duration: 0.8, ease: 'power2.out' }, 2.75);
+      tl.from(sqCentro, { svgOrigin: '470 410', scale: 0.55, rotation: 45, opacity: 0, duration: 0.65, ease: 'expo.out' }, 2.72);
+      tl.from(sqMarco, { svgOrigin: '470 410', scale: 0.32, rotation: 45, opacity: 0, duration: 0.85, ease: 'expo.out' }, 2.8);
+      tl.from(diags, { svgOrigin: '470 410', scale: 0, opacity: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05 }, 2.95);
+      tl.from(vertices, { transformOrigin: 'center center', scale: 0, opacity: 0, duration: 0.4, ease: 'back.out(2.2)', stagger: 0.06 }, 3.15);
+
+      // 4) Las 4 cards simplificadas derivan directamente desde los 4 vértices del cuadrado
+      cards.forEach((card, i) => {
+        const dx = Number(card.dataset.dx || 0);
+        const dy = Number(card.dataset.dy || 0);
+        tl.from(card, {
+          x: dx, y: dy, scale: 0.42, opacity: 0, duration: 0.75, ease: 'back.out(1.2)',
+        }, 3.22 + i * 0.1);
+      });
+      tl.from(flechas, { transformOrigin: 'center center', opacity: 0, scale: 0.3, duration: 0.45, ease: 'back.out(1.8)', stagger: 0.07 }, 3.55);
+
+      // Pulso de luz continuo recorriendo el perímetro del cuadrado 2D
+      const perimetro = sqFlujo.getTotalLength();
+      gsap.set(sqFlujo, { strokeDasharray: `120 ${Math.round(perimetro - 120)}`, strokeDashoffset: 0 });
+      tl.to(sqFlujo, { opacity: 0.92, duration: 0.6 }, 3.75);
+      gsap.to(sqFlujo, { strokeDashoffset: -perimetro, duration: 6.2, repeat: -1, ease: 'none' });
     },
   },
 
@@ -230,24 +271,97 @@ const definiciones = {
 
   ciclo: {
     logo: LOGO_ESQUINA, halo: [50, 45],
+    preparar(el) {
+      this._paso = 0;
+      const etapas = $$('.etapa', el);
+      etapas.forEach((etapa, k) => {
+        etapa.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const s = slides[actual];
+          if (s?.id !== 'ciclo') return;
+          if (s.tl && s.tl.progress() < 1) s.tl.progress(1, false);
+          s.irAPaso(k);
+        });
+      });
+    },
+    irAPaso(indice, { inmediato = false } = {}) {
+      const el = this.el;
+      const etapas = $$('.etapa', el);
+      const detalles = $$('.detalle-ciclo > *', el);
+      const relleno = $('.riel-ciclo i', el);
+      const num = $('.paso-num', el);
+      const anterior = this._paso ?? 0;
+      const destino = Math.max(0, Math.min(etapas.length - 1, indice));
+      this._paso = destino;
+      if (num) num.textContent = String(destino + 1);
+      etapas.forEach((e, i) => {
+        e.classList.toggle('activa', i <= destino);
+        e.classList.toggle('actual', i === destino);
+      });
+      gsap.to(relleno, { width: `${(destino / (etapas.length - 1)) * 100}%`, duration: inmediato ? 0 : 0.55, ease: 'power2.inOut', overwrite: true });
+      if (!inmediato) {
+        gsap.fromTo($('.bola', etapas[destino]), { scale: 1 }, { scale: 1.13, duration: 0.22, yoyo: true, repeat: 1, ease: 'power2.out', overwrite: true });
+      }
+      detalles.forEach((d, i) => {
+        d.classList.toggle('visible', i === destino);
+        if (i === destino) {
+          if (inmediato) {
+            gsap.set(d, { opacity: 1, y: 0, overwrite: true });
+          } else {
+            const desdeY = destino >= anterior ? 28 : -28;
+            gsap.fromTo(d, { opacity: 0, y: desdeY }, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', overwrite: true });
+          }
+        } else if (inmediato) {
+          gsap.set(d, { opacity: 0, y: 0, overwrite: true });
+        } else if (i === anterior) {
+          const haciaY = destino > anterior ? -20 : 20;
+          gsap.to(d, { opacity: 0, y: haciaY, duration: 0.28, ease: 'power2.in', overwrite: true });
+        } else {
+          gsap.set(d, { opacity: 0, y: 0, overwrite: true });
+        }
+      });
+    },
+    avanzar() {
+      const total = $$('.etapa', this.el).length;
+      if ((this._paso ?? 0) < total - 1) {
+        this.irAPaso((this._paso ?? 0) + 1);
+        return true;
+      }
+      return false;
+    },
+    retroceder() {
+      if ((this._paso ?? 0) > 0) {
+        this.irAPaso((this._paso ?? 0) - 1);
+        return true;
+      }
+      return false;
+    },
+    alFinal() {
+      const total = $$('.etapa', this.el).length;
+      this.irAPaso(total - 1, { inmediato: true });
+    },
     construir(tl, el) {
       const etapas = $$('.etapa', el);
       const detalles = $$('.detalle-ciclo > *', el);
-      etapas.forEach((e) => e.classList.remove('activa'));
-      gsap.set(detalles, { opacity: 0 });
+      const relleno = $('.riel-ciclo i', el);
+      const num = $('.paso-num', el);
+      this._paso = 0;
+      if (num) num.textContent = '1';
+      etapas.forEach((e) => e.classList.remove('activa', 'actual'));
+      detalles.forEach((d) => d.classList.remove('visible'));
+      gsap.set(detalles, { opacity: 0, y: 0 });
+      gsap.set(relleno, { width: '0%' });
+
       tl.from($('.etiqueta', el), { opacity: 0, x: -20, duration: 0.6 }, 0.2);
       revelar(tl, $('.titulo', el), 0.3);
-      tl.from($('.en-vivo', el), { opacity: 0, y: -10, duration: 0.6 }, 0.9);
-      subir(tl, etapas, 0.8, { stagger: 0.1 });
-      const relleno = $('.riel-ciclo i', el);
-      etapas.forEach((etapa, k) => {
-        const t = 1.6 + k * 1.35;
-        tl.to(relleno, { width: `${(k / (etapas.length - 1)) * 100}%`, duration: 0.6, ease: 'power2.inOut' }, t - 0.5);
-        tl.call(() => etapas.forEach((e, i) => e.classList.toggle('activa', i <= k)), null, t);
-        tl.fromTo($('.bola', etapa), { scale: 1 }, { scale: 1.12, duration: 0.25, yoyo: true, repeat: 1, ease: 'power2.out' }, t);
-        if (k > 0) tl.to(detalles[k - 1], { opacity: 0, y: -20, duration: 0.35 }, t);
-        tl.fromTo(detalles[k], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, t + 0.1);
-      });
+      tl.from($('.ciclo-meta', el), { opacity: 0, y: -10, duration: 0.6 }, 0.8);
+      subir(tl, etapas, 0.75, { stagger: 0.08 });
+      tl.call(() => {
+        etapas[0].classList.add('activa', 'actual');
+        detalles[0].classList.add('visible');
+      }, null, 1.15);
+      tl.fromTo($('.bola', etapas[0]), { scale: 1 }, { scale: 1.12, duration: 0.22, yoyo: true, repeat: 1, ease: 'power2.out' }, 1.15);
+      tl.fromTo(detalles[0], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.65, ease: 'expo.out' }, 1.2);
     },
   },
 
@@ -285,7 +399,7 @@ const definiciones = {
       tl.from($('.etiqueta', el), { opacity: 0, x: -20, duration: 0.6 }, 0.2);
       revelar(tl, $('.titulo', el), 0.3);
       revelar(tl, $('.bajada', el), 0.7, { duration: 0.8, stagger: 0.02 });
-      tl.from($('.plan-prev', el), { x: -80, opacity: 0, duration: 1, ease: 'expo.out' }, 1.0);
+      tl.from($('.plan-prev-card', el), { x: -70, opacity: 0, duration: 1, ease: 'expo.out' }, 1.0);
       tl.from($('.calendario', el), { y: 60, opacity: 0, duration: 1, ease: 'expo.out' }, 0.9);
       tl.from($$('.dia', el), { opacity: 0, scale: 0.85, duration: 0.4, stagger: 0.012, ease: 'power2.out' }, 1.2);
       tl.to($$('.marca-plan', el), { opacity: 1, duration: 0.01, stagger: 0.32 }, 1.9);
@@ -310,9 +424,11 @@ const definiciones = {
         tl.to(contador, { v: meta, duration: 1.6, ease: 'expo.out', onUpdate: () => { n.textContent = contador.v.toFixed(decimales).replace('.', ','); } }, 1.0 + i * 0.12);
       });
       tl.from($$('.kpi .delta', el), { opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.1, ease: 'back.out(2)' }, 2.2);
-      tl.from($$('.ventana', el), { y: 80, opacity: 0, rotationX: 12, transformPerspective: 1600, duration: 1.1, ease: 'expo.out', stagger: 0.15 }, 1.6);
-      tl.from($('.pdf', el), { x: 80, opacity: 0, duration: 1, ease: 'expo.out' }, 2.1);
-      tl.from($('.pdf .hoja', el), { rotation: -14, y: 30, duration: 1.2, ease: 'back.out(1.6)' }, 2.2);
+      tl.from($$('.datos-fila > *', el), { y: 70, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.14 }, 1.5);
+      tl.from($$('.barra-g', el), { scaleY: 0, transformOrigin: '50% 100%', duration: 0.85, ease: 'expo.out', stagger: 0.045 }, 1.85);
+      tl.from($$('.g-val', el), { opacity: 0, y: 8, duration: 0.45, stagger: 0.04 }, 2.2);
+      tl.from($$('.atencion-item', el), { x: 24, opacity: 0, duration: 0.55, ease: 'expo.out', stagger: 0.08 }, 1.85);
+      tl.from($('.panel-pdf .hoja-pdf', el), { rotation: -10, y: 24, duration: 1.1, ease: 'back.out(1.6)' }, 2.0);
     },
   },
 
@@ -382,7 +498,10 @@ function irA(indice, { final = false, inmediato = false } = {}) {
     s.construir(s.tl, s.el);
   }, s.el);
   s.entrar?.();
-  if (final) s.tl.progress(1, false);
+  if (final) {
+    s.tl.progress(1, false);
+    s.alFinal?.();
+  }
   moverLogo(s.logo, inmediato || final);
   gsap.to(fondo, { '--hx': `${s.halo[0]}%`, '--hy': `${s.halo[1]}%`, duration: inmediato ? 0 : 1.6, ease: 'expo.inOut' });
   ambiente.mover(indice);
@@ -395,10 +514,14 @@ function siguiente() {
   if (estado === 'video') { terminarVideo(); return; }
   const s = slides[actual];
   if (s?.tl && s.tl.progress() < 1) { s.tl.progress(1, false); return; }
+  if (s?.avanzar?.()) return;
   irA(actual + 1);
 }
 function anterior() {
   if (estado !== 'deck') return;
+  const s = slides[actual];
+  if (s?.tl && s.tl.progress() < 1) s.tl.progress(1, false);
+  if (s?.retroceder?.()) return;
   irA(actual - 1, { final: true });
 }
 
@@ -467,5 +590,8 @@ addEventListener('mousemove', () => {
 });
 
 // ?slide=N&final=1 abre directo una slide (para capturas y para ensayar)
-if (parametros.has('slide')) saltarIntro(Number(parametros.get('slide')) - 1, parametros.get('final') === '1');
+if (parametros.has('slide')) {
+  saltarIntro(Number(parametros.get('slide')) - 1, parametros.get('final') === '1');
+  if (parametros.has('paso')) { slides[actual]?.tl?.progress(1, false); slides[actual]?.irAPaso?.(Number(parametros.get('paso')) - 1, { inmediato: true }); }
+}
 window.presentacion = { irA, slides, siguiente, anterior };
