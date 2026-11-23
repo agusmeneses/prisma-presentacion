@@ -486,9 +486,10 @@ svg.marca { width: 1em; height: 1em; }
 /* ---------- 12 · equipo ---------- */
 .integrantes { position: absolute; left: 96px; top: 400px; width: 1728px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; }
 .integrante { text-align: center; }
-.integrante .foto { width: 230px; height: 230px; margin: 0 auto 26px; border-radius: 50%; display: grid; place-items: center; position: relative;
-  background: radial-gradient(circle at 30% 25%, #14373a, #091315 70%); border: 1.5px dashed rgba(60, 194, 194, .45); color: var(--atenuado); font-size: 70px; }
-.integrante .foto img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.integrante .foto { width: 230px; height: 230px; margin: 0 auto 26px; border-radius: 50%; display: grid; place-items: center; position: relative; overflow: hidden;
+  background: radial-gradient(circle at 30% 25%, #14373a, #091315 70%); border: 2px solid rgba(60, 194, 194, .58);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .55), 0 0 0 6px rgba(60, 194, 194, .09); color: var(--atenuado); font-size: 70px; }
+.integrante .foto img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center 22%; }
 .integrante b { display: block; font-family: var(--titular); font-weight: 500; font-size: 30px; }
 .integrante span { display: block; margin-top: 6px; font-size: 19px; color: var(--secundario); }
 
