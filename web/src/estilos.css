@@ -469,20 +469,6 @@ svg.marca { width: 1em; height: 1em; }
 .pdf-cta { display: inline-flex; align-items: center; gap: 9px; padding: 9px 18px; border-radius: 999px; font-size: 15px; font-weight: 500;
   color: var(--brillante); background: rgba(60, 194, 194, .10); border: 1px solid rgba(60, 194, 194, .38); }
 
-/* ---------- 11 · por qué ---------- */
-.comparacion { position: absolute; left: 96px; top: 380px; width: 1728px; }
-.comparacion .fila-c { display: grid; grid-template-columns: 780px 1fr 1fr 1fr; align-items: center; height: 68px; border-bottom: 1px solid #12282b; font-size: 25px; color: var(--claro); }
-.comparacion .fila-c.cabeza { height: 86px; border-bottom-color: var(--borde); font-size: 20px; color: var(--secundario); }
-.comparacion .fila-c > span { text-align: center; }
-.comparacion .fila-c > span:first-child { text-align: left; }
-.comparacion .cabeza .prisma-col { font-family: var(--titular); font-size: 34px; color: var(--texto); display: flex; align-items: center; justify-content: center; gap: 12px; }
-.comparacion .cabeza .prisma-col img { width: 40px; }
-.marca-si, .marca-no, .marca-medio { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; font-size: 24px; }
-.marca-si { background: var(--brillante); color: var(--fondo); }
-.marca-no { border: 1.5px solid #3a2a2c; color: #a65b5b; }
-.marca-medio { border: 1.5px solid #3c3a2a; color: #a8914f; }
-.columna-prisma { position: absolute; top: -14px; height: 650px; border-radius: 26px; background: rgba(60, 194, 194, .07); border: 1px solid rgba(60, 194, 194, .45); box-shadow: 0 0 80px rgba(60, 194, 194, .12); }
-
 /* ---------- 12 · equipo ---------- */
 .integrantes { position: absolute; left: 96px; top: 400px; width: 1728px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; }
 .integrante { text-align: center; }

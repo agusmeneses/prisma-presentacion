@@ -432,24 +432,6 @@ const definiciones = {
     },
   },
 
-  porque: {
-    logo: LOGO_ESQUINA, halo: [80, 50],
-    construir(tl, el) {
-      tl.from($('.etiqueta', el), { opacity: 0, x: -20, duration: 0.6 }, 0.2);
-      revelar(tl, $('.titulo', el), 0.3);
-      const filas = $$('.fila-c', el);
-      subir(tl, filas, 0.8, { stagger: 0.07, y: 20, filter: 'blur(0px)' });
-      tl.from($('.columna-prisma', el), { scaleY: 0, transformOrigin: '50% 0', opacity: 0, duration: 1, ease: 'expo.out' }, 1.3);
-      tl.from($$('.fila-c > span:last-child .marca-si', el), { scale: 0, rotation: -120, duration: 0.5, stagger: 0.14, ease: 'back.out(2.2)' }, 1.8);
-    },
-    preparar(el) {
-      // La columna resaltada se alinea con la última columna de la tabla
-      const cabeza = $('.fila-c.cabeza', el);
-      const ultima = cabeza.lastElementChild;
-      Object.assign($('.columna-prisma', el).style, { left: `${ultima.offsetLeft - 10}px`, width: `${ultima.offsetWidth + 20}px` });
-    },
-  },
-
   equipo: {
     logo: LOGO_ESQUINA, halo: [50, 50],
     construir(tl, el) {
